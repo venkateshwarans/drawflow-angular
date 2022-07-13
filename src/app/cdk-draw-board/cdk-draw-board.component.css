@@ -1,0 +1,152 @@
+.board-container  {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-image: url('../../assets/tile.png');
+    background-repeat: repeat;
+    background-size: 2rem 2rem;
+    background-color: #FBFBFB;
+    height: 100%;
+}
+
+.board-navigation  {
+    height: 4.5rem;
+    background-color: #FFF;
+    border: 1px solid #E8E8EF;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+
+.board-side-nav {
+    width: 0;
+    background-color: #FFF;
+    border: 1px solid #E8E8EF;
+    box-sizing: border-box;
+    padding-top: 5rem;
+    height: 100%;
+    /* position: absolute; */
+    z-index: 2;
+}
+
+.board-property-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20rem;
+    height: 100%;
+    padding-left: 1.25rem;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.board-property-container.active {
+    z-index: 2;
+}
+
+.board {
+    position: absolute;
+    width: calc(100% - 24rem);
+    height: calc(100% - 4.5rem);
+    top: 4.5rem;
+    z-index: 0;
+    overflow: auto;
+    transition: all 0.25s;
+}
+
+.board.pushed {
+    transform: translateX(22rem);
+}
+
+.board-side-nav .collapse {
+    border: 1px solid #E8E8EF;
+    border-left: none;
+    right: -3rem;
+}
+
+.side-nav-blocks-container {
+    height: calc(100vh - 18rem);
+    overflow-y: auto;
+    padding-top: 0.75rem;
+}
+
+.lego-block {
+    border: 1px solid transparent;
+    transition-property: box-shadow, height;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.05,.03,.35,1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px rgb(22 33 74 / 0%);
+    box-sizing: border-box;
+    word-break:break-all;
+    z-index: 1;
+}
+
+.side-nav-blocks-container .lego-block:hover {
+    box-shadow: 0px 4px 30px rgb(22 33 74 / 8%);
+    border-radius: 5px;
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.lego-block .block-icon {
+    height: 2.5rem;
+    background-color: #F1F4FC;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.lego-block .grab-icon {
+    flex: 0 0 2.25rem;
+}
+
+.lego-block .block-icon {
+    flex: 0 0 2.5rem;
+}
+
+.board-property-container .board-properties {
+    position: absolute;
+    height: 100%;
+    width: 20rem;
+    background-color: #FFF;
+    right: -150px;
+    opacity: 0;
+    z-index: 2;
+    top: 0px;
+    box-shadow: -4px 0px 40px rgb(26 26 73 / 0%);
+    padding-left: 2.25rem;
+    transition: all .25s cubic-bezier(.05,.03,.35,1);
+    padding-top: 5rem;
+}
+
+.board-property-container.active .board-properties {
+    right: 0;
+    opacity: 1;
+    box-shadow: -4px 0px 40px rgb(26 26 73 / 5%);
+    z-index: 2;
+    padding-left: 1.5rem;
+}
+
+
+
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+::ng-deep .board-container .mat-drawer-container {
+    overflow: visible;
+}
+
+::ng-deep .board-container .mat-drawer-container .mat-drawer-content {
+    overflow: visible;
+}
+
+::ng-deep .board-side-nav .mat-drawer {
+    width: 24rem;
+    padding-top: 5rem;
+}
+  

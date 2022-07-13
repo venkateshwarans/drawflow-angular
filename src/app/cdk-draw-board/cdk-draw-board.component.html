@@ -1,0 +1,65 @@
+<div class="board-container">
+    <div class="board-navigation flex items-center px-6">
+        <div class="text-xl font-bold">
+            Connector Development Kit
+        </div>
+        <div class="ml-auto">
+            <button mat-flat-button color="primary">Export</button>
+        </div>
+    </div>
+
+    <mat-drawer-container class="board-side-nav relative" autosize>
+        <div (click)="drawer.toggle(); isBlockMenuOpen = !isBlockMenuOpen" class="collapse absolute flex items-center justify-center h-12 w-12 bg-white cursor-pointer">
+            <img src="assets/closeleft.svg"  alt="">
+        </div>
+        <mat-drawer #drawer class="flex gap-4 flex-col px-6" mode="side">
+            <div class="side-nav-search flex flex-col">
+                <div class="side-nav-title pt-4 flex-col">
+                    <h1 class="text-lg font-bold">Lego Blocks</h1>
+                </div>
+                <mat-form-field class="flex-1" appearance="outline"  >
+                    <mat-label>Search lego blocks</mat-label>
+                    <input class="w-100" matInput placeholder="Placeholder">
+                    <mat-icon matPrefix>search</mat-icon>
+                </mat-form-field>
+                <div class="side-nav-blocks-container flex flex-col gap-4">
+                    <ng-container *ngFor="let node of nodes">
+                        <div draggable="true" (dragend)="onDragEnd($event)" (dragstart)="onDragStart($event)" class="drag-drawflow lego-block flex gap-3 items-center px-3 py-2">
+                            <div class="grab-icon">
+                                <img src="assets/grabme.svg" alt="">
+                            </div>
+                            <div class="block-icon flex justify-center items-center">
+                                <img src="assets/database.svg" alt="">
+                            </div>
+                            <div class="block-details flex flex-wrap flex-col">
+                                <h3 class="font-bold">{{node.name}}</h3>
+                                <p class="font-light">Block description goes here. description goes here. description goes here</p>
+                            </div>
+                            <p class="hidden">{{node.name}}</p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-drawer>
+    </mat-drawer-container>
+
+
+    <div class="board-property-container active">
+        <div class="board-properties">
+            <div class="title pt-4 flex-col">
+                <h1 class="text-lg font-bold">Lego Blocks</h1>
+            </div>
+            <div class="property-details">
+                {{selectedItem?.name}}
+            </div>
+        </div>
+    </div>
+    <div class="board" id="drawboard" [ngClass]="{'pushed': isBlockMenuOpen === true}"
+        (dragenter)="onDragEnter($event)"
+        (dragleave)="onDragLeave($event)"
+        (dragover)="onDragOver($event)"
+        (dragend)="onDragEnd($event)"
+        (drop)="onDrop($event)">
+    </div>
+    
+</div>
